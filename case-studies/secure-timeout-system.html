@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A team project that emulates an NXP S32K358 evaluation board in QEMU, runs FreeRTOS, and tests timers, interrupts, and UART communication.">
+  <meta name="theme-color" content="#eeeee7">
+  <title>Secure Timeout System — Simone Romano</title>
+  <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../styles.css">
+  <script src="../script.js" defer></script>
+</head>
+<body class="case-body">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header case-header">
+    <a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span></button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
+    <nav id="case-nav" class="site-nav" data-nav><a href="../index.html#work">← All work</a><a class="nav-external" href="https://github.com/sroman0/SECURE-TIMEOUT-SYSTEM-NXPS32K3X8EVB" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a></nav>
+  </header>
+
+  <main id="main" class="case-main">
+    <section class="case-hero">
+      <div class="case-kicker"><span>Embedded systems / 2025</span><span>Computer Architectures and Operating Systems · Politecnico di Torino</span></div>
+      <h1>Secure Timeout System.<br><em>A board built in software.</em></h1>
+      <div class="case-summary">
+        <p>Our team recreated the essential parts of an automotive development board inside QEMU, started FreeRTOS on it, and built an application to test timers, interrupts, and serial communication.</p>
+        <div class="case-facts">
+          <div><span>Role</span><strong>Team developer</strong></div>
+          <div><span>Team</span><strong>5 students</strong></div>
+          <div><span>Stack</span><strong>C, QEMU, FreeRTOS</strong></div>
+          <div><span>Target</span><strong>NXP S32K358EVB</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="case-content">
+      <section class="case-section reveal">
+        <div class="case-section-label">01 / The challenge</div>
+        <div class="case-prose">
+          <h2>Test embedded software without the physical board.</h2>
+          <p>The course project targeted the NXP S32K358EVB, an automotive development board based on an Arm Cortex-M7 processor. The board was not available as a standard QEMU machine, so the application could not run until we modeled the hardware it expected.</p>
+          <p>That made the project broader than writing one embedded application. We had to connect three layers: a virtual board, a real-time operating system, and software that exercised the emulated peripherals.</p>
+          <div class="flow-diagram" aria-label="Project layers"><span>Virtual board</span><i></i><span>FreeRTOS</span><i></i><span>Drivers</span><i></i><span>Application</span></div>
+        </div>
+      </section>
+
+      <section class="case-section reveal">
+        <div class="case-section-label">02 / Board model</div>
+        <div class="case-prose">
+          <h2>Recreate only the hardware the software needs.</h2>
+          <p>We extended QEMU with the board's memory layout and the peripherals required by the application. This included flash and RAM regions, interrupt-controller configuration, UART communication, and Periodic Interrupt Timers.</p>
+          <div class="outcome-grid">
+            <article class="outcome-card"><span>Processor</span><strong>Cortex-M7</strong><p>The emulated machine provides the execution environment expected by the board software.</p></article>
+            <article class="outcome-card"><span>Communication</span><strong>UART</strong><p>Serial output makes startup and application behavior visible from the host.</p></article>
+            <article class="outcome-card"><span>Timing</span><strong>3 PIT units</strong><p>Periodic timers generate the interrupts used by the application.</p></article>
+            <article class="outcome-card accent"><span>Testing</span><strong>QEMU + GDB</strong><p>The whole system can run and be debugged without physical hardware.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section reveal">
+        <div class="case-section-label">03 / Software</div>
+        <div class="case-prose">
+          <h2>Bring FreeRTOS up on the emulated board.</h2>
+          <p>The software side includes startup code, a linker script, peripheral drivers, and the FreeRTOS configuration. Together they prepare memory, start the scheduler, and connect timer interrupts to the application.</p>
+          <p>The Secure Timeout System uses separate tasks to monitor activity, simulate events, and handle alerts. Hardware timers provide periodic signals, while UART output shows how the tasks and events behave during a run.</p>
+          <div class="flow-diagram" aria-label="Runtime flow"><span>PIT timer</span><i></i><span>Interrupt</span><i></i><span>FreeRTOS task</span><i></i><span>System event</span><i></i><span>UART output</span></div>
+        </div>
+      </section>
+
+      <section class="case-section reveal">
+        <div class="case-section-label">04 / Reproducibility</div>
+        <div class="case-prose">
+          <h2>Make a complex toolchain repeatable.</h2>
+          <p>The repository keeps QEMU and FreeRTOS as explicit dependencies and provides Make targets for the main workflows: building the emulator, compiling and running the application, or starting a debug session for GDB.</p>
+          <p>A detailed setup guide records the board model, memory map, peripherals, build steps, and project decisions. This matters because embedded projects are difficult to review when the original environment cannot be recreated.</p>
+          <div class="callout"><strong>Practical result</strong><p>A developer can build, run, and inspect the system on a Linux machine without access to the NXP evaluation board.</p></div>
+        </div>
+      </section>
+
+      <section class="case-section reveal">
+        <div class="case-section-label">05 / Boundaries</div>
+        <div class="case-prose">
+          <h2>Useful emulation, with clear limits.</h2>
+          <p>The virtual board models the parts needed by this project; it is not a complete reproduction of every S32K358 peripheral or every electrical behavior of the physical device. Results from QEMU still need hardware validation before they can support a real automotive deployment.</p>
+          <p>The team also investigated adapting FreeRTOS memory-protection support from Cortex-M4 to Cortex-M7. The repository documents the required changes and processor errata, but correctly describes the full MPU implementation as work in progress.</p>
+          <p><a class="button button-primary" href="https://github.com/sroman0/SECURE-TIMEOUT-SYSTEM-NXPS32K3X8EVB" target="_blank" rel="noreferrer">Explore the repository <span aria-hidden="true">↗</span></a></p>
+        </div>
+      </section>
+
+      <a class="case-next" href="smart-contract-gas-costs.html"><span>Next case study</span><strong>Smart-contract research →</strong></a>
+    </div>
+  </main>
+  <footer class="portfolio-footer"><div><strong>© <span data-year></span> Simone Romano.</strong><span>All rights reserved.</span></div><div><span>Case study / Embedded systems</span><a href="../index.html">Back to portfolio</a></div><div><span>Site last updated</span><time datetime="2026-06-20">20 June 2026</time></div></footer>
+</body>
+</html>

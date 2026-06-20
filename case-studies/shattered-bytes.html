@@ -6,7 +6,7 @@
   <meta name="description" content="Shattered Bytes is a process-oriented serious game for learning manual data carving and defensible digital-forensics reasoning.">
   <meta name="theme-color" content="#eeeee7">
   <title>Shattered Bytes - Simone Romano</title>
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles.css">
   <script src="../script.js" defer></script>
@@ -15,6 +15,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header case-header">
     <a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span></button>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
     <nav id="case-nav" class="site-nav" data-nav><a href="../index.html#work">← All work</a><a href="https://github.com/sroman0/shattered-bytes" target="_blank" rel="noreferrer">Code ↗</a><a class="nav-external" href="https://sroman0.github.io/shattered-bytes/" target="_blank" rel="noreferrer">Play demo <span aria-hidden="true">↗</span></a></nav>
   </header>
@@ -24,7 +25,7 @@
       <div class="case-kicker"><span>Digital forensics + learning design / 2026</span><span>Individual project · Politecnico di Torino</span></div>
       <h1>Shattered Bytes.<br><em>Recovery is not enough.</em></h1>
       <div class="case-summary">
-        <p>A six-act browser game that turns manual data carving into an investigation. Players recover raw bytes, but they are evaluated on whether the method-and the conclusion-can be defended.</p>
+        <p>A six-part browser game that teaches students to recover digital evidence from raw data. Players are assessed not only on what they find, but also on how clearly they can justify their method and conclusion.</p>
         <div class="case-facts">
           <div><span>Role</span><strong>Designer &amp; developer</strong></div>
           <div><span>Duration</span><strong>10–15 minutes</strong></div>
@@ -38,9 +39,9 @@
       <section class="case-section reveal">
         <div class="case-section-label">01 / The design problem</div>
         <div class="case-prose">
-          <h2>Teach forensic reasoning,<br>not pattern matching.</h2>
-          <p>Manual data carving is often reduced to finding a file header and extracting everything up to a footer. That creates the wrong mental model. A valid signature may be a decoy; a file can be fragmented; recoverable evidence can be irrelevant; and an incomplete artefact remains useful only when its limits are reported honestly.</p>
-          <p>I designed Shattered Bytes around a stricter premise: signatures generate hypotheses, not conclusions. The player works as a junior analyst on a fictional ransomware case, Operation Shattered Meridian, and every technical action must answer an investigative question.</p>
+          <h2>Teach forensic reasoning, not pattern matching.</h2>
+          <p>Data carving means recovering files directly from raw bytes. It is often taught as a simple search for the beginning and end of a file, but real investigations are less tidy: a match can be a decoy, a file can be split into pieces, and recoverable data may have nothing to do with the case.</p>
+          <p>Shattered Bytes teaches players to treat each match as a clue, not a conclusion. The player is a junior analyst investigating a fictional ransomware incident, and every recovery must help answer a case question.</p>
           <div class="flow-diagram" aria-label="Core forensic workflow"><span>Inspect</span><i></i><span>Hypothesize</span><i></i><span>Select</span><i></i><span>Recover</span><i></i><span>Validate</span><i></i><span>Report</span></div>
         </div>
       </section>
@@ -48,8 +49,8 @@
       <section class="case-section reveal">
         <div class="case-section-label">02 / Campaign</div>
         <div class="case-prose">
-          <h2>One new complication<br>at a time.</h2>
-          <p>The campaign uses progressive scaffolding. Every act preserves earlier skills and introduces one new source of uncertainty, so the final challenge becomes a synthesis rather than an unrelated puzzle.</p>
+          <h2>One new complication at a time.</h2>
+          <p>Each act keeps the skills learned before it and adds one new complication. The final challenge therefore combines familiar ideas instead of introducing an unrelated puzzle.</p>
           <div class="outcome-grid">
             <article class="outcome-card"><span>Act 01</span><strong>False lead</strong><p>Recognize exact PNG boundaries and reject a plausible decoy.</p></article>
             <article class="outcome-card"><span>Act 02</span><strong>Fragmentation</strong><p>Reassemble two byte runs without including unrelated gap residue.</p></article>
@@ -65,9 +66,9 @@
       <section class="case-section reveal">
         <div class="case-section-label">03 / Assessment</div>
         <div class="case-prose">
-          <h2>The game scores<br>how you think.</h2>
+          <h2>The game scores how you think.</h2>
           <p>Completion alone hides the difference between disciplined analysis and lucky extraction. The game records search commands, navigation, byte selections, fragment stashing, compose attempts, XOR operations, report claims, hint use, and procedural decisions.</p>
-          <p>Those actions feed a score and an eight-dimensional mastery profile: signature recognition, offset precision, fragment reconstruction, trial-and-error discipline, obfuscation handling, procedure discipline, forensic reasoning, and reporting quality.</p>
+          <p>Those actions produce both a score and a skill profile. The final feedback covers accuracy, reconstruction, careful experimentation, evidence handling, reasoning, and report quality.</p>
           <div class="callout"><strong>Assessment for learning</strong><p>Wrong actions are allowed rather than silently blocked. Broad selections, premature carving, and unsupported reports remain visible in the investigation timeline and affect the final feedback. The mistake becomes part of the lesson.</p></div>
         </div>
       </section>
@@ -75,9 +76,9 @@
       <section class="case-section reveal">
         <div class="case-section-label">04 / Implementation</div>
         <div class="case-prose">
-          <h2>Deterministic by design.</h2>
-          <p>Shattered Bytes is a static React/Vite application with no backend. Source assets are transformed into deterministic JSON level dumps; explicit metadata defines genuine evidence regions, decoys, fragments, and expected reporting outcomes.</p>
-          <p>This makes validation explainable and classroom sessions repeatable. The system can distinguish an exact fragment from an overlapping range that includes residue without relying on hidden AI or an opaque server decision. GitHub Actions deploys the game as a public, installation-free demo.</p>
+          <h2>The same action always receives the same result.</h2>
+          <p>Shattered Bytes is a static React application with no backend. A level generator creates the data used by the game and records exactly where genuine evidence, decoys, and fragments are located.</p>
+          <p>Because the validation rules are explicit, classroom sessions are repeatable and feedback can be explained. The game does not depend on hidden AI or an unknown server decision, and it runs as a public demo without installation.</p>
           <div class="flow-diagram" aria-label="Technical architecture"><span>Source assets</span><i></i><span>Level generator</span><i></i><span>JSON dumps</span><i></i><span>React game state</span><i></i><span>Mastery report</span></div>
         </div>
       </section>
@@ -85,7 +86,7 @@
       <section class="case-section reveal">
         <div class="case-section-label">05 / Boundaries</div>
         <div class="case-prose">
-          <h2>A training environment,<br>not a forensic suite.</h2>
+          <h2>A training environment, not a forensic suite.</h2>
           <p>The dumps are synthetic, the chain-of-custody interaction is simplified, and single-byte XOR introduces obfuscation rather than modeling modern encryption. The score is educational feedback, not professional certification.</p>
           <p>Those constraints are deliberate: they keep the experience short, inspectable, and suitable for comparing methods in a laboratory debrief. The next meaningful validation step is classroom testing-observing not just whether students enjoy the game, but whether they can explain why their recovery is defensible.</p>
           <p><a class="button button-primary" href="https://sroman0.github.io/shattered-bytes/" target="_blank" rel="noreferrer">Play Shattered Bytes <span aria-hidden="true">↗</span></a></p>
@@ -95,6 +96,6 @@
       <a class="case-next" href="ssh-shell-attacks.html"><span>Next case study</span><strong>SSH Shell Attacks →</strong></a>
     </div>
   </main>
-  <footer class="site-footer"><span>© <span data-year></span> Simone Romano</span><span>Case study / Shattered Bytes</span><div><a href="../index.html">Home</a><a href="mailto:simoneromano221@gmail.com">Email</a></div></footer>
+  <footer class="portfolio-footer"><div><strong>© <span data-year></span> Simone Romano.</strong><span>All rights reserved.</span></div><div><span>Case study / Shattered Bytes</span><a href="../index.html">Back to portfolio</a></div><div><span>Site last updated</span><time datetime="2026-06-20">20 June 2026</time></div></footer>
 </body>
 </html>

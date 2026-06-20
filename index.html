@@ -3,272 +3,202 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Simone Romano is a cybersecurity engineer working across security research, digital forensics, intelligent systems, and software engineering.">
-  <meta name="theme-color" content="#11130f">
-  <meta property="og:title" content="Simone Romano - Cybersecurity Engineer">
-  <meta property="og:description" content="Security research, forensic thinking, intelligent systems, and software built with evidence in mind.">
+  <meta name="description" content="Simone Romano is a cybersecurity engineer working on security research, digital forensics, applied AI, and secure systems.">
+  <meta name="theme-color" content="#eeeee7">
+  <meta property="og:title" content="Simone Romano — Cybersecurity Engineer">
+  <meta property="og:description" content="Security research, digital forensics, applied AI, and secure systems—explained clearly.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://sroman0.github.io/simoneromano.github.io/">
-  <title>Simone Romano - Cybersecurity Engineer</title>
-  <script>document.documentElement.classList.add('js')</script>
+  <meta property="og:url" content="https://sromano-digital-portfolio.simoneromano221.workers.dev/">
+  <meta property="og:image" content="https://sromano-digital-portfolio.simoneromano221.workers.dev/resources/simone-romano.webp">
+  <title>Simone Romano — Cybersecurity Engineer</title>
+  <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
 </head>
-<body>
+<body class="home-page">
   <a class="skip-link" href="#main">Skip to content</a>
+
   <header class="site-header" data-header>
     <a class="wordmark" href="#top" aria-label="Simone Romano, home">
       <span class="wordmark-mark" aria-hidden="true">SR</span>
       <span>Simone Romano</span>
     </a>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span></button>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
-      <span></span><span></span>
-      <span class="sr-only">Toggle navigation</span>
+      <span></span><span></span><span class="sr-only">Toggle navigation</span>
     </button>
     <nav id="site-nav" class="site-nav" data-nav>
-      <a href="#work">Work</a>
       <a href="#about">About</a>
+      <a href="#work">Projects</a>
+      <a href="#recognition">Recognition</a>
       <a href="#contact">Contact</a>
-      <a class="nav-external" href="https://github.com/sroman0" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
     </nav>
   </header>
 
   <main id="main">
-    <section class="hero" id="top">
-      <div class="hero-copy">
+    <section class="portfolio-hero" id="top">
+      <div class="portfolio-hero-copy">
         <p class="eyebrow"><span class="status-dot"></span> Cybersecurity engineer · Turin, Italy</p>
-        <h1>I make complex<br><em>security problems</em><br>testable.</h1>
-        <p class="hero-intro">I'm Simone. I research vulnerabilities, build forensic learning experiences, apply machine learning to attack data, and engineer systems that turn difficult questions into evidence.</p>
+        <h1>Hi, I'm Simone.<br><em>I build and study secure systems.</em></h1>
+        <p class="hero-intro">I am a Cybersecurity Engineering master's student at Politecnico di Torino. In July 2026, I will move to Tokyo for a master's thesis internship at Rakuten Mobile. I turn complex security problems into practical, testable projects.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
-          <a class="text-link" href="mailto:simoneromano221@gmail.com">Start a conversation <span aria-hidden="true">↗</span></a>
+          <a class="button button-primary" href="#work">View my projects <span aria-hidden="true">↓</span></a>
+          <a class="text-link" href="#about">More about me</a>
         </div>
       </div>
+      <figure class="portrait-card">
+        <img src="resources/simone-romano.webp" srcset="resources/simone-romano-600.webp 600w, resources/simone-romano.webp 1200w" sizes="(max-width: 760px) calc(100vw - 2.5rem), (max-width: 900px) 36vw, 31vw" width="1200" height="1800" fetchpriority="high" decoding="async" alt="Portrait of Simone Romano wearing an IEEE-HKN Mu Nu Chapter hoodie">
+        <figcaption><span>Simone Romano</span><span>Cybersecurity engineer</span></figcaption>
+      </figure>
+    </section>
 
-      <div class="hero-system hero-profile" aria-label="Simone's fields of work: security research, systems, forensics, and machine learning">
-        <div class="system-label system-label-top">Curiosity → evidence</div>
-        <div class="system-orbit orbit-one"></div>
-        <div class="system-orbit orbit-two"></div>
-        <div class="system-core">
-          <span>SR</span>
-          <small>security engineer</small>
+    <section class="quick-intro" aria-label="Current profile">
+      <div><span>Next step</span><strong>Master's thesis internship at Rakuten Mobile · Tokyo, July 2026</strong></div>
+      <div><span>Interested in</span><strong>Security research, System and network security, Cyber Analysis, Protocol verification and Agentic AI</strong></div>
+      <div><span>Based in</span><strong>Turin, Italy</strong></div>
+    </section>
+
+    <section class="portfolio-section about-simple" id="about">
+      <div class="simple-heading reveal">
+        <p class="eyebrow">About me</p>
+        <h2>Curious, practical,<br><em>and always learning.</em></h2>
+      </div>
+      <div class="about-simple-grid">
+        <div class="about-simple-copy reveal">
+          <p>I enjoy understanding how technology works, where it can fail, and how to make it safer. My projects range from Linux vulnerability research to digital-forensics training, machine learning, wireless security, and full-stack applications.</p>
+          <p>I care about clear results and clear explanations. Good technical work should be reproducible, honest about its limits, and understandable to people outside the immediate research area.</p>
+          <p>In July 2026, I will join Rakuten Mobile in Tokyo for an internship connected to my master's thesis—an opportunity to develop my research in an international engineering environment.</p>
+          <p>For one year, I worked in the Events Area of the <a href="https://www.hknpolito.org/" target="_blank" rel="noreferrer">IEEE-Eta Kappa Nu Mu Nu Chapter at Politecnico di Torino <span aria-hidden="true">↗</span></a>, helping organize activities that brought students and technology professionals together.</p>
         </div>
-        <div class="system-node node-offense"><span>01</span> Security research</div>
-        <div class="system-node node-defense"><span>02</span> Digital forensics</div>
-        <div class="system-node node-ml"><span>03</span> Machine learning</div>
-        <div class="system-node node-systems"><span>04</span> Systems engineering</div>
-        <div class="system-packet packet-one"></div>
-        <div class="system-packet packet-two"></div>
-        <div class="system-label system-label-bottom">Build → measure → explain</div>
+        <div class="profile-timeline reveal">
+          <div class="profile-row"><span>Jul 2026</span><div><strong>Master's Thesis Intern</strong><p>Rakuten Mobile · Tokyo, Japan</p></div></div>
+          <div class="profile-row"><span>2024—26</span><div><strong>MSc Cybersecurity Engineering</strong><p>Politecnico di Torino</p></div></div>
+          <div class="profile-row"><span>1 year</span><div><strong>Events Area Member</strong><p><a href="https://www.hknpolito.org/" target="_blank" rel="noreferrer">IEEE-HKN Mu Nu Chapter ↗</a></p></div></div>
+          <div class="profile-row"><span>BSc</span><div><strong>Computer Engineering</strong><p>Università degli Studi del Sannio</p></div></div>
+        </div>
       </div>
     </section>
 
-    <section class="signal-strip" aria-label="Key outcomes">
-      <div class="signal reveal"><strong>02</strong><span>full privilege<br>escalation chains</span></div>
-      <div class="signal reveal"><strong>06</strong><span>forensic game acts<br>designed and built</span></div>
-      <div class="signal reveal"><strong>230K</strong><span>honeypot attack<br>sessions studied</span></div>
-      <div class="signal reveal"><strong>01</strong><span>international IEEE-HKN<br>hackathon win</span></div>
-    </section>
-
-    <section class="section work-section" id="work">
-      <div class="section-heading reveal">
-        <p class="eyebrow">Selected work / 2025-2026</p>
-        <h2>Different mediums.<br>One way of working.</h2>
-        <p>Understand the problem deeply, build something concrete, measure what happened, and communicate the result honestly.</p>
+    <section class="portfolio-section projects-simple" id="work">
+      <div class="simple-heading simple-heading-light reveal">
+        <p class="eyebrow">Selected projects</p>
+        <h2>What I worked on,<br><em>in plain language.</em></h2>
+        <p>Each project page includes the technical details, results, and limitations. Here is the short version.</p>
       </div>
 
-      <div class="project-grid">
-        <article class="project project-research reveal">
-          <a class="project-hitarea" href="case-studies/ebpf-exploitability.html" aria-label="Read the eBPF exploitability case study"></a>
-          <div class="project-meta"><span>01 / Vulnerability research</span><span>Individual project</span></div>
-          <div class="research-visual" aria-hidden="true">
-            <span><b>39191</b><small>LPE</small></span><span><b>42072</b><small>DoS</small></span><span><b>45020</b><small>Leak</small></span><span><b>58100</b><small>LPE</small></span>
-          </div>
-          <h3>Exploitability analysis</h3>
-          <p>Four verifier vulnerabilities reproduced in isolated labs, with two distinct chains reaching root.</p>
-          <div class="project-footer"><span>Read the case study</span><span class="circle-arrow" aria-hidden="true">↗</span></div>
+      <div class="simple-project-grid">
+        <article class="simple-project reveal">
+          <div class="simple-project-top"><span>01 · Security research</span><span>2026</span></div>
+          <h3>Linux vulnerability research</h3>
+          <p>I studied four flaws in a Linux security check and built two controlled demonstrations that reached administrator access inside isolated virtual machines.</p>
+          <p class="project-why"><strong>Why it matters:</strong> a small mistake in a safety check can give an attacker control of the whole system.</p>
+          <a href="case-studies/ebpf-exploitability.html">Read the case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="project project-vesuvius reveal">
-          <a class="project-hitarea" href="case-studies/vesuvius.html" aria-label="Read the Vesuvius case study"></a>
-          <div class="project-meta"><span>02 / Defensive engineering</span><span>Master's thesis</span></div>
-          <div class="vesuvius-visual" aria-hidden="true">
-            <div class="event-stream">
-              <span>fork</span><i></i><span>exec</span><i></i><span>exit</span>
-            </div>
-            <div class="event-pipe"><i></i><i></i><i></i><i></i></div>
-            <div class="event-output">{ "event": "process_exec" }</div>
-          </div>
+        <article class="simple-project reveal">
+          <div class="simple-project-top"><span>02 · Master's thesis</span><span>Current</span></div>
           <h3>Vesuvius</h3>
-          <p>An eBPF runtime-security monitor for process and network events, developed as a Master's thesis in collaboration with Rakuten.</p>
-          <div class="project-footer"><span>Explore the system</span><span class="circle-arrow" aria-hidden="true">↗</span></div>
+          <p>With Rakuten, I am building a tool that watches important process and network activity on Linux systems and turns it into useful security events.</p>
+          <p class="project-why"><strong>Why it matters:</strong> defenders need a clear view of what is happening on a machine before they can detect suspicious behavior.</p>
+          <a href="case-studies/vesuvius.html">Read the case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="project project-shattered reveal">
-          <a class="project-hitarea" href="case-studies/shattered-bytes.html" aria-label="Read the Shattered Bytes case study"></a>
-          <div class="project-meta"><span>03 / Digital forensics</span><span>Serious game</span></div>
-          <div class="hex-visual" aria-hidden="true">
-            <span>89 50 4E 47 0D 0A 1A 0A</span>
-            <span>00 00 00 0D 49 48 44 52</span>
-            <span class="hex-focus">49 45 4E 44 AE 42 60 82</span>
-            <b>CARVE / 0x31A0-0x4F82</b>
-          </div>
+        <article class="simple-project reveal">
+          <div class="simple-project-top"><span>03 · Digital forensics</span><span>2026</span></div>
           <h3>Shattered Bytes</h3>
-          <p>A six-act browser game that teaches disk forensics through evidence intake, hex analysis, data carving, fragmentation, MBR parsing, and defensible reporting.</p>
-          <div class="project-footer"><span>Read the case study</span><span class="circle-arrow" aria-hidden="true">↗</span></div>
+          <p>I designed and built a browser game that teaches students how to recover digital evidence from raw data while documenting their reasoning.</p>
+          <p class="project-why"><strong>Why it matters:</strong> finding a file is not enough—an analyst must explain why the evidence and the conclusion are trustworthy.</p>
+          <a href="case-studies/shattered-bytes.html">Read the case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="project project-ssh reveal">
-          <a class="project-hitarea" href="case-studies/ssh-shell-attacks.html" aria-label="Read the SSH Shell Attacks case study"></a>
-          <div class="project-meta"><span>04 / ML for security</span><span>Team project</span></div>
-          <div class="class-bars" aria-label="Seven attack intent classes">
-            <span style="--w: 99.37%">BERT F1</span>
-            <span style="--w: 99.66%">SVM F1</span>
-            <span style="--w: 94.9%">K-Means silhouette</span>
-          </div>
+        <article class="simple-project reveal">
+          <div class="simple-project-top"><span>04 · Machine learning</span><span>2025</span></div>
           <h3>SSH Shell Attacks</h3>
-          <p>Supervised, unsupervised, and language-model analysis of 230,000 honeypot sessions mapped to MITRE ATT&amp;CK intents.</p>
-          <div class="project-footer"><span>Read the case study</span><span class="circle-arrow" aria-hidden="true">↗</span></div>
+          <p>My team analyzed 230,000 real attack sessions collected by honeypots and tested different models for recognizing what attackers were trying to do.</p>
+          <p class="project-why"><strong>Why it matters:</strong> automated analysis can help security teams understand large volumes of attack data more quickly.</p>
+          <a href="case-studies/ssh-shell-attacks.html">Read the case study <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="project project-thesis reveal">
-          <a class="project-hitarea" href="case-studies/smart-contract-gas-costs.html" aria-label="Read the smart contract design and gas costs case study"></a>
-          <div class="project-meta"><span>05 / Empirical software engineering</span><span>Bachelor's thesis</span></div>
-          <div class="thesis-visual" aria-hidden="true">
-            <div><strong>4,965</strong><span>clone pairs screened</span></div>
-            <i></i>
-            <div><strong>18</strong><span>design patterns</span></div>
-            <i></i>
-            <div class="thesis-result"><strong>06</strong><span>significant associations</span></div>
-          </div>
-          <h3>Smart Contract Design &amp; Gas Costs</h3>
-          <p>An empirical study connecting architectural choices in real Ethereum smart contracts with higher execution costs.</p>
-          <div class="project-footer"><span>Read the case study</span><span class="circle-arrow" aria-hidden="true">↗</span></div>
+        <article class="simple-project reveal">
+          <div class="simple-project-top"><span>05 · Embedded systems</span><span>2025</span></div>
+          <h3>Secure Timeout System</h3>
+          <p>My team recreated an automotive development board in QEMU, ran FreeRTOS on it, and tested timers, interrupts, and serial communication without physical hardware.</p>
+          <p class="project-why"><strong>Why it matters:</strong> reliable emulation makes embedded software easier to develop, debug, and reproduce.</p>
+          <a href="case-studies/secure-timeout-system.html">Read the case study <span aria-hidden="true">→</span></a>
+        </article>
+
+        <article class="simple-project reveal">
+          <div class="simple-project-top"><span>06 · Bachelor's thesis</span><span>2024</span></div>
+          <h3>Smart-contract design and execution costs</h3>
+          <p>I analyzed real Ethereum programs to understand which design choices were linked to higher transaction fees. Six of the eighteen patterns I tested showed a meaningful statistical association.</p>
+          <p class="project-why"><strong>Why it matters:</strong> software architecture affects cost—not only code-level optimization.</p>
+          <a href="case-studies/smart-contract-gas-costs.html">Read the case study <span aria-hidden="true">→</span></a>
         </article>
       </div>
     </section>
 
-    <section class="section more-work-section" id="more-work" aria-labelledby="more-work-title">
-      <div class="more-work-heading reveal">
-        <div>
-          <p class="eyebrow">More projects / Applied work</p>
-          <h2 id="more-work-title">The wider field.</h2>
-        </div>
-        <p>Team projects and laboratories spanning wireless systems, positioning security, applied AI, product engineering, and an international hackathon win.</p>
+    <section class="portfolio-section other-work-simple" aria-labelledby="other-work-title">
+      <div class="simple-heading reveal">
+        <p class="eyebrow">Other work</p>
+        <h2 id="other-work-title">More things I've built.</h2>
       </div>
-
-      <div class="project-list">
-        <a class="project-list-item reveal" href="https://github.com/HKN-HACKATHON/team9-spaghetti-overflow" target="_blank" rel="noreferrer">
-          <span class="list-index">06</span>
-          <div class="list-title"><h3>Spaghetti Overflow</h3><span class="award-badge">Winner · IEEE-HKN</span></div>
-          <span class="list-kind">Open-source product</span>
-          <p>An open-source tool for IEEE-HKN chapters, designed, built, and pitched by team Stregoni during the 2nd International IEEE-HKN Hackathon.</p>
-          <span class="list-arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a class="project-list-item reveal" href="https://github.com/WDCSecure/LabGNSS" target="_blank" rel="noreferrer">
-          <span class="list-index">07</span>
-          <div class="list-title"><h3>GNSS Security Lab</h3><span>WDCSecure</span></div>
-          <span class="list-kind">Positioning security</span>
-          <p>Android raw-measurement processing, pseudorange and C/N₀ analysis, weighted least-squares positioning, ADR, and controlled spoofing experiments in MATLAB.</p>
-          <span class="list-arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a class="project-list-item reveal" href="https://github.com/WDCSecure/LabWiFi" target="_blank" rel="noreferrer">
-          <span class="list-index">08</span>
-          <div class="list-title"><h3>WiFi Performance Lab</h3><span>WDCSecure</span></div>
-          <span class="list-kind">Wireless systems</span>
-          <p>A repeatable Ethernet, WiFi, and mixed-mode testbed using iperf and packet captures to compare goodput, TCP sequence behavior, RTT, and variability.</p>
-          <span class="list-arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a class="project-list-item reveal" href="https://github.com/AImSecure" target="_blank" rel="noreferrer">
-          <span class="list-index">09</span>
-          <div class="list-title"><h3>AImSecure</h3><span>Four-lab collection</span></div>
-          <span class="list-kind">AI + cybersecurity</span>
-          <p>Collaborative experiments across feed-forward, recurrent, and graph neural networks, anomaly detection, and security-focused NLP with BERT and UnixCoder.</p>
-          <span class="list-arrow" aria-hidden="true">↗</span>
-        </a>
-
-        <a class="project-list-item reveal" href="https://github.com/sroman0/Cloud-WebApp" target="_blank" rel="noreferrer">
-          <span class="list-index">10</span>
-          <div class="list-title"><h3>Cloud Service Configurator</h3><span>Full-stack application</span></div>
-          <span class="list-kind">Product engineering</span>
-          <p>A React application and REST backend for configuring compute, storage, and transfer plans with live pricing, persistent orders, sessions, and optional TOTP 2FA.</p>
-          <span class="list-arrow" aria-hidden="true">↗</span>
-        </a>
+      <div class="compact-project-list">
+        <a href="https://github.com/HKN-HACKATHON/team9-spaghetti-overflow" target="_blank" rel="noreferrer"><span>IEEE-HKN Hackathon</span><strong>Spaghetti Overflow</strong><small>Winning open-source project</small><b aria-hidden="true">↗</b></a>
+        <a href="https://github.com/WDCSecure/LabGNSS" target="_blank" rel="noreferrer"><span>Positioning security</span><strong>GNSS Security Lab</strong><small>Raw measurements and spoofing tests</small><b aria-hidden="true">↗</b></a>
+        <a href="https://github.com/WDCSecure/LabWiFi" target="_blank" rel="noreferrer"><span>Wireless systems</span><strong>WiFi Performance Lab</strong><small>Network measurements and packet analysis</small><b aria-hidden="true">↗</b></a>
+        <a href="https://github.com/AImSecure" target="_blank" rel="noreferrer"><span>AI + cybersecurity</span><strong>AImSecure</strong><small>Four applied machine-learning labs</small><b aria-hidden="true">↗</b></a>
+        <a href="https://github.com/sroman0/Cloud-WebApp" target="_blank" rel="noreferrer"><span>Full-stack development</span><strong>Cloud Service Configurator</strong><small>REST API, live pricing, and 2FA</small><b aria-hidden="true">↗</b></a>
       </div>
     </section>
 
-    <section class="section recognition-section" aria-labelledby="recognition-title">
-      <div class="recognition-heading reveal">
+    <section class="portfolio-section recognition-simple" id="recognition">
+      <div class="simple-heading reveal">
         <p class="eyebrow">Recognition</p>
-        <h2 id="recognition-title">Measured against<br><em>the field.</em></h2>
+        <h2>A few milestones.</h2>
       </div>
-
-      <div class="recognition-grid">
-        <article class="recognition-card reveal">
-          <div class="recognition-rank"><strong>57<sup>th</sup></strong><span>of 2,000 teams</span></div>
-          <div><span class="recognition-year">2026</span><h3>Reply AI Agents Challenge</h3><p>Top 60 worldwide</p></div>
-        </article>
-        <article class="recognition-card reveal">
-          <div class="recognition-rank"><strong>88<sup>th</sup></strong><span>of 2,000 teams</span></div>
-          <div><span class="recognition-year">2025</span><h3>Reply Hack The Code Challenge</h3><p>Top 100 worldwide</p></div>
-        </article>
-        <article class="recognition-card recognition-card-honor reveal">
-          <div class="recognition-seal" aria-hidden="true">ΗΚΝ</div>
-          <div><span class="recognition-year">Honor society</span><h3>IEEE-Eta Kappa Nu Member</h3><p>Mu Nu Chapter · Politecnico di Torino</p></div>
-        </article>
+      <div class="recognition-list">
+        <div class="recognition-row reveal">
+          <strong>1st</strong>
+          <div class="recognition-copy"><a href="https://hkn.ieee.org/alumni-news/2026/02/engineering-a-shared-future-the-2025-ieee-hkn-global-hackathon" target="_blank" rel="noreferrer"><b>IEEE-HKN Global Hackathon 2025</b><span>Winner with SpaghettiOverflow · Mu Nu Chapter</span></a></div>
+        </div>
+        <div class="recognition-row reveal">
+          <strong>57th</strong>
+          <div class="recognition-copy"><a href="https://challenges.reply.com/challenges/ai-agent/home/" target="_blank" rel="noreferrer"><b>Reply AI Agents Challenge 2026</b><span>Top 60 out of 2,000 teams</span></a></div>
+        </div>
+        <div class="recognition-row reveal">
+          <strong>88th</strong>
+          <div class="recognition-copy"><a href="https://challenges.reply.com/challenges/hack-the-code-standard/how-it-works/" target="_blank" rel="noreferrer"><b>Reply Hack The Code Challenge 2025</b><span>Top 100 out of 2,000 teams · Team FARES</span></a><a class="recognition-proof" href="resources/certificates/reply-hack-the-code-2025.pdf" target="_blank" rel="noreferrer">View certificate ↗</a></div>
+        </div>
+        <div class="recognition-row recognition-membership reveal">
+          <strong>ΗΚΝ</strong>
+          <div class="recognition-copy"><a href="https://www.hknpolito.org/" target="_blank" rel="noreferrer"><b>IEEE-Eta Kappa Nu Honor Society</b><span>Mu Nu Chapter member · Politecnico di Torino</span></a><a class="recognition-proof" href="resources/certificates/ieee-hkn-membership-2026.pdf" target="_blank" rel="noreferrer">View membership card ↗</a></div>
+        </div>
+        <div class="recognition-row recognition-language reveal">
+          <strong>B2</strong>
+          <div class="recognition-copy"><a href="https://www.cambridgeenglish.org/exams-and-tests/qualifications/first/" target="_blank" rel="noreferrer"><b>Cambridge English: B2 First</b><span>Credential ID: 862380AXK</span></a></div>
+        </div>
       </div>
     </section>
 
-    <section class="section about-section" id="about">
-      <div class="about-statement reveal">
-        <p class="eyebrow">About</p>
-        <h2>Curious across disciplines.<br><em>Precise in the work.</em></h2>
+    <section class="contact-simple" id="contact">
+      <div class="reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's talk.</h2>
+        <p>If you want to discuss security research, an engineering role, or a project, feel free to reach out.</p>
       </div>
-      <div class="about-grid">
-        <div class="about-copy reveal">
-          <p>I am a Cybersecurity Engineering MSc student at Politecnico di Torino and a Master's thesis researcher collaborating with Rakuten. Before specializing in security, I trained as a computer engineer-a foundation that still shapes how I move between software, systems, data, and human-centered design.</p>
-          <p>I am drawn to projects that require more than one lens: exploit research grounded in reproducible evidence, educational software that evaluates reasoning rather than clicks, and machine learning examined for both performance and failure modes. I care about the craft of explaining technical work as much as making it work.</p>
-          <p>I also like ambitious work to feel human. I value teams that can stay exacting about the result without becoming solemn about the process-an outlook I bring to research, hackathons, and long project days alike.</p>
-          <a class="text-link" href="https://www.linkedin.com/in/simone-romano-383277307/" target="_blank" rel="noreferrer">More on LinkedIn <span aria-hidden="true">↗</span></a>
-        </div>
-        <div class="timeline reveal">
-          <div class="timeline-item">
-            <span>Now</span>
-            <div><strong>Master's Thesis Researcher</strong><p>Rakuten · eBPF runtime security</p></div>
-          </div>
-          <div class="timeline-item">
-            <span>2024-26</span>
-            <div><strong>MSc Cybersecurity Engineering</strong><p>Politecnico di Torino</p></div>
-          </div>
-          <div class="timeline-item">
-            <span>Earlier</span>
-            <div><strong>BSc Computer Engineering</strong><p>Università degli Studi del Sannio · smart-contract efficiency thesis</p></div>
-          </div>
-        </div>
+      <div class="contact-links reveal">
+        <a href="mailto:simoneromano221@gmail.com">Email <span aria-hidden="true">↗</span></a>
+        <a href="https://www.linkedin.com/in/simone-romano-383277307/" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/sroman0" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
       </div>
-      <div class="capability-row reveal">
-        <span>Security research</span><span>Systems engineering</span><span>C / Go / Python</span><span>Digital forensics</span><span>Machine learning</span><span>Wireless security</span><span>Full-stack development</span><span>Technical communication</span>
-      </div>
-    </section>
-
-    <section class="contact-section" id="contact">
-      <div class="contact-copy reveal">
-        <p class="eyebrow">Open channel</p>
-        <h2>Have a difficult<br>security problem?</h2>
-        <a class="contact-email" href="mailto:simoneromano221@gmail.com">simoneromano221@gmail.com <span aria-hidden="true">↗</span></a>
-      </div>
-      <div class="contact-orbit reveal" aria-hidden="true"><span>Let's talk</span></div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <span>© <span data-year></span> Simone Romano</span>
-    <span>Designed and built with intent.</span>
-    <div><a href="https://github.com/sroman0" target="_blank" rel="noreferrer">GitHub</a><a href="https://www.linkedin.com/in/simone-romano-383277307/" target="_blank" rel="noreferrer">LinkedIn</a></div>
+  <footer class="portfolio-footer">
+    <div><strong>© <span data-year></span> Simone Romano.</strong><span>All rights reserved.</span></div>
+    <div><span>Built with HTML, CSS, and JavaScript.</span><span>Deployed on Cloudflare Workers.</span></div>
+    <div><span>Site last updated</span><time datetime="2026-06-20">20 June 2026</time></div>
   </footer>
 </body>
 </html>

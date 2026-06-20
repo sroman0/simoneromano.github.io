@@ -6,7 +6,7 @@
   <meta name="description" content="An empirical bachelor's thesis investigating how design decisions in Ethereum smart contracts are associated with higher gas execution costs.">
   <meta name="theme-color" content="#eeeee7">
   <title>Smart Contract Design &amp; Gas Costs — Simone Romano</title>
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles.css">
   <script src="../script.js" defer></script>
@@ -15,6 +15,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header case-header">
     <a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span></button>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
     <nav id="case-nav" class="site-nav" data-nav><a href="../index.html#work">← All work</a><a class="nav-external" href="https://zenodo.org/records/20776825" target="_blank" rel="noreferrer">Read thesis <span aria-hidden="true">↗</span></a></nav>
   </header>
@@ -24,7 +25,7 @@
       <div class="case-kicker"><span>Empirical software engineering / 2024</span><span>Università degli Studi del Sannio</span></div>
       <h1>Smart contract design.<br><em>Execution has a price.</em></h1>
       <div class="case-summary">
-        <p>My bachelor's thesis investigated whether architectural decisions—not only low-level Solidity code smells—can be connected to higher gas consumption in real Ethereum smart contracts.</p>
+        <p>My bachelor's thesis studied whether the way an Ethereum program is designed—not only how each line is written—can make its transactions more expensive.</p>
         <div class="case-facts">
           <div><span>Role</span><strong>Independent researcher</strong></div>
           <div><span>Dataset</span><strong>1,010 functions</strong></div>
@@ -38,9 +39,9 @@
       <section class="case-section reveal">
         <div class="case-section-label">01 / Research gap</div>
         <div class="case-prose">
-          <h2>Optimization starts before<br>the first line of code.</h2>
-          <p>Most work on Ethereum gas efficiency focuses on implementation-level problems: expensive storage operations, poorly bounded loops, redundant computation, or unnecessary external calls. Tools such as Gasol and MadMax detect these issues through source, bytecode, static, or symbolic analysis.</p>
-          <p>The thesis examined a different layer. Two contracts can contain highly similar functions yet surround them with different roles, withdrawal mechanisms, lifecycle controls, and supporting functionality. Could those design choices help explain why nearly identical functions have different execution costs?</p>
+          <h2>Optimization starts before the first line of code.</h2>
+          <p>Running a smart contract costs gas, which users pay as a transaction fee. Most optimization work looks at individual coding mistakes, such as unnecessary storage operations or repeated calculations.</p>
+          <p>My thesis looked one level higher: the design of the whole contract. Two functions can be almost identical but live inside systems with different roles, withdrawal methods, and lifecycle rules. I studied whether those surrounding decisions were linked to different costs.</p>
           <div class="callout"><strong>Research question</strong><p>Which recurring smart-contract design solutions are statistically associated with high gas execution costs?</p></div>
         </div>
       </section>
@@ -48,8 +49,8 @@
       <section class="case-section reveal">
         <div class="case-section-label">02 / Dataset</div>
         <div class="case-prose">
-          <h2>Start with code that is<br>almost identical.</h2>
-          <p>The source dataset contained 4,965 pairs of clone functions extracted from real Ethereum smart contracts. I focused on 43 pairs with more than 95% similarity but divergent execution costs. Holding the function body nearly constant made surrounding design differences easier to inspect.</p>
+          <h2>Compare code that is almost identical.</h2>
+          <p>The dataset contained 4,965 pairs of similar functions from real Ethereum contracts. I focused on 43 pairs that were more than 95% alike but had different execution costs. Keeping the function code nearly constant made the surrounding design easier to compare.</p>
           <p>Manual comparison of those pairs generated candidate patterns. The broader validation stage then operated on 1,010 unique functions and their associated contracts.</p>
           <div class="flow-diagram" aria-label="Dataset refinement"><span>4,965 clone pairs</span><i></i><span>&gt;95% similarity</span><i></i><span>43 divergent pairs</span><i></i><span>Manual comparison</span><i></i><span>1,010 functions</span></div>
         </div>
@@ -58,9 +59,9 @@
       <section class="case-section reveal">
         <div class="case-section-label">03 / Method</div>
         <div class="case-prose">
-          <h2>Manual discovery.<br>Automated validation.</h2>
-          <p>I grouped recurring differences into four design areas: executive-role management, withdrawal methods, market lifecycle, and additional supporting functions. This produced 18 candidate patterns.</p>
-          <p>Each pattern was translated into a tested regular expression and scanned across the full contract dataset. A Python script built contingency tables comparing pattern presence with normal or high execution cost. Fisher's exact test, run in R, evaluated statistical significance and odds ratios.</p>
+          <h2>Discover patterns manually, then test them at scale.</h2>
+          <p>I grouped repeated differences into four areas: administrative roles, withdrawal methods, market lifecycle, and supporting functions. This produced 18 candidate design patterns.</p>
+          <p>I converted each pattern into a tested search rule and scanned the full dataset. Python prepared the comparisons, while Fisher's exact test in R measured whether each pattern had a meaningful association with higher cost.</p>
           <div class="outcome-grid">
             <article class="outcome-card"><span>Discovery</span><strong>43 pairs</strong><p>Close manual analysis of high-similarity functions with divergent costs.</p></article>
             <article class="outcome-card"><span>Candidate model</span><strong>18 patterns</strong><p>Regex-based detectors across four design areas.</p></article>
@@ -73,8 +74,8 @@
       <section class="case-section reveal">
         <div class="case-section-label">04 / Results</div>
         <div class="case-prose">
-          <h2>Six patterns survived<br>statistical scrutiny.</h2>
-          <p>Six of the 18 candidates showed a statistically significant association with higher gas costs. The strongest observed odds ratios ranged from approximately 2.22 to 5.33.</p>
+          <h2>Six patterns showed a meaningful association.</h2>
+          <p>Six of the 18 candidates were statistically associated with higher gas costs in this dataset. The measured odds ratios ranged from approximately 2.22 to 5.33.</p>
           <div class="outcome-grid">
             <article class="outcome-card accent"><span>Strongest association</span><strong>5.33× odds</strong><p>A fund-redistribution pattern involving payable cross-contract interaction.</p></article>
             <article class="outcome-card accent"><span>Owner withdrawal</span><strong>5.18× odds</strong><p>A full-balance withdrawal guarded by ownership checks.</p></article>
@@ -88,7 +89,7 @@
       <section class="case-section reveal">
         <div class="case-section-label">05 / Implications</div>
         <div class="case-prose">
-          <h2>Gas efficiency is also<br>an architecture concern.</h2>
+          <h2>Gas efficiency is also a design concern.</h2>
           <p>The findings suggest that developers should reason about gas consumption while defining roles, lifecycle transitions, fund movement, and contract boundaries—not only during low-level Solidity optimization.</p>
           <p>A practical continuation would turn the validated patterns into design guidelines or analysis tooling that flags potentially expensive architectural choices before deployment.</p>
         </div>
@@ -97,7 +98,7 @@
       <section class="case-section reveal">
         <div class="case-section-label">06 / Boundaries</div>
         <div class="case-prose">
-          <h2>Association, not<br>universal causation.</h2>
+          <h2>An association is not a universal rule.</h2>
           <p>The dataset represents a specific family of real contracts, many centered on token farming, sales, and market behavior. This limits generalization to other application domains. Regex detectors can also miss semantically equivalent patterns expressed through different syntax.</p>
           <p>Future work should use broader multi-chain datasets, semantic code representations, and machine-learning-based detectors. The reported odds ratios quantify association inside this dataset; they are not guarantees that adding one pattern will multiply every transaction's gas consumption by the same factor.</p>
           <p><a class="button button-primary" href="https://zenodo.org/records/20776825" target="_blank" rel="noreferrer">Read the full thesis on Zenodo <span aria-hidden="true">↗</span></a></p>
@@ -107,6 +108,6 @@
       <a class="case-next" href="shattered-bytes.html"><span>Next case study</span><strong>Shattered Bytes →</strong></a>
     </div>
   </main>
-  <footer class="site-footer"><span>© <span data-year></span> Simone Romano</span><span>Case study / Bachelor's thesis</span><div><a href="../index.html">Home</a><a href="mailto:simoneromano221@gmail.com">Email</a></div></footer>
+  <footer class="portfolio-footer"><div><strong>© <span data-year></span> Simone Romano.</strong><span>All rights reserved.</span></div><div><span>Case study / Bachelor's thesis</span><a href="../index.html">Back to portfolio</a></div><div><span>Site last updated</span><time datetime="2026-06-20">20 June 2026</time></div></footer>
 </body>
 </html>

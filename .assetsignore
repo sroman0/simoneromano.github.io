@@ -1,0 +1,10 @@
+.git/
+.github/
+.wrangler/
+.gitignore
+.nojekyll
+report/
+resources/Simone_Romano.png
+LICENSE
+README.md
+wrangler.jsonc

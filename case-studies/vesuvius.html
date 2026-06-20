@@ -6,7 +6,7 @@
   <meta name="description" content="Vesuvius is an eBPF runtime-security monitor developed by Simone Romano as a Master's thesis in collaboration with Rakuten.">
   <meta name="theme-color" content="#eeeee7">
   <title>Vesuvius - Simone Romano</title>
-  <script>document.documentElement.classList.add('js')</script>
+  <script>document.documentElement.classList.add('js');try{const theme=localStorage.getItem('theme');if(theme==='dark'||(!theme&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.dataset.theme='dark'}catch(_){if(matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}</script>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="../styles.css">
   <script src="../script.js" defer></script>
@@ -15,6 +15,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header case-header">
     <a class="wordmark" href="../index.html" aria-label="Back to Simone Romano's portfolio"><span class="wordmark-mark" aria-hidden="true">SR</span><span>Simone Romano</span></a>
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme"><span class="theme-toggle-icon" aria-hidden="true"></span><span class="theme-toggle-label"></span></button>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="case-nav" data-nav-toggle><span></span><span></span><span class="sr-only">Toggle navigation</span></button>
     <nav id="case-nav" class="site-nav" data-nav><a href="../index.html#work">← All work</a><a class="nav-external" href="https://github.com/V3suv1us/demo_project" target="_blank" rel="noreferrer">Repository <span aria-hidden="true">↗</span></a></nav>
   </header>
@@ -22,9 +23,9 @@
   <main id="main" class="case-main">
     <section class="case-hero">
       <div class="case-kicker"><span>Defensive engineering / 2026</span><span>Master's thesis · Rakuten collaboration</span></div>
-      <h1>Vesuvius.<br><em>Runtime behavior, surfaced.</em></h1>
+      <h1>Vesuvius.<br><em>Making system activity visible.</em></h1>
       <div class="case-summary">
-        <p>An eBPF-based security monitor designed to observe process and network activity on a real enterprise Linux target-without treating an old kernel version number as the whole compatibility story.</p>
+        <p>A security-monitoring tool that watches how programs start, stop, and communicate on a Linux machine. The goal is to give defenders useful evidence for detecting suspicious behavior.</p>
         <div class="case-facts">
           <div><span>My role</span><strong>Process monitoring</strong></div>
           <div><span>Target</span><strong>Rocky Linux 8.10</strong></div>
@@ -38,20 +39,20 @@
       <section class="case-section reveal">
         <div class="case-section-label">01 / Context</div>
         <div class="case-prose">
-          <h2>Modern observability on<br>an enterprise kernel.</h2>
-          <p>Vesuvius is my Master's thesis project at Politecnico di Torino, developed with a teammate and in collaboration with Rakuten. The system captures security-relevant process and network events in the kernel, transports them efficiently to userspace, and prepares them for structured detection and analysis.</p>
-          <p>I own the process-monitoring path: process creation, execution, and termination. The parallel network path covers connect, accept, and bind activity. Together, the two views establish the process-to-socket context needed by a runtime-security system.</p>
+          <h2>Watch the system while it is running.</h2>
+          <p>Vesuvius is my Master's thesis project at Politecnico di Torino, developed with a teammate and in collaboration with Rakuten. It records important process and network events while a Linux system is running, then turns them into structured data for security analysis.</p>
+          <p>I am responsible for process monitoring: when a process is created, starts a program, or exits. My teammate covers network connections. Combining the two views helps explain which program communicated with which endpoint.</p>
         </div>
       </section>
 
       <section class="case-section reveal">
         <div class="case-section-label">02 / Architecture</div>
         <div class="case-prose">
-          <h2>From a kernel event<br>to structured evidence.</h2>
+          <h2>Turn a system event into useful security data.</h2>
           <div class="flow-diagram" aria-label="Vesuvius architecture">
             <span>eBPF hooks</span><i></i><span>Shared maps</span><i></i><span>Ring buffer</span><i></i><span>Go reader</span><i></i><span>JSON events</span><i></i><span>Detection</span>
           </div>
-          <p>The kernel component collects minimal event context at stable tracepoints and LSM hooks. Shared maps maintain process and container state, while a ring buffer carries events to a Go userspace reader. The output is normalized as JSON for downstream rules and MITRE ATT&amp;CK-oriented detection.</p>
+          <p>Small eBPF programs collect events inside the kernel. Shared maps remember process and container information, and a ring buffer sends each event to a Go application. The application converts the data to JSON so detection rules can use it.</p>
           <h3>Process lifecycle</h3>
           <ul>
             <li><code>sched_process_fork</code> establishes parent-child lineage.</li>
@@ -64,9 +65,9 @@
       <section class="case-section reveal">
         <div class="case-section-label">03 / Compatibility</div>
         <div class="case-prose">
-          <h2>The version said 4.18.<br>The capabilities said otherwise.</h2>
-          <p>The deployment target reports a Linux 4.18 kernel, which initially suggested severe limits: no modern BTF/CO-RE workflow, no ring buffer, and an older eBPF feature set. That assumption was wrong because Rocky Linux carries extensive Red Hat backports.</p>
-          <p>I built and ran focused probes on the actual target. BTF, CO-RE relocations, BPF LSM, ring buffers, and larger BPF stack usage all passed. The evidence changed the architecture: we could use modern libbpf patterns directly instead of maintaining compatibility workarounds based on the upstream version number alone.</p>
+          <h2>Test the real system, not just its version number.</h2>
+          <p>The target reports Linux 4.18, which normally suggests that several modern eBPF features are unavailable. Rocky Linux, however, adds newer features to its older base kernel through vendor backports.</p>
+          <p>I wrote small tests for each capability we needed. BTF, portable CO-RE access, BPF LSM, ring buffers, and larger eBPF stacks all worked. Those results let us use a simpler modern architecture instead of building unnecessary compatibility code.</p>
           <div class="outcome-grid">
             <article class="outcome-card"><span>Portability</span><strong>BTF + CO-RE</strong><p>Portable field access against the real target kernel.</p></article>
             <article class="outcome-card"><span>Transport</span><strong>Ring buffer</strong><p>Modern event delivery instead of perf-event arrays.</p></article>
@@ -79,17 +80,17 @@
       <section class="case-section reveal">
         <div class="case-section-label">04 / Engineering</div>
         <div class="case-prose">
-          <h2>Small kernel payloads.<br>Explicit shared contracts.</h2>
-          <p>Kernel code is kept focused on collection and transport. Common headers define event, task, namespace, and architecture data. Maps provide explicit contracts for task state, event scratch space, and container context; heavier parsing and policy remain in Go userspace.</p>
-          <p>The project uses feature branches and pull requests to keep two parallel workstreams aligned. Process and network telemetry share event types and state models, making integration decisions visible instead of burying them in hook-specific implementations.</p>
+          <h2>Keep kernel code small and responsibilities clear.</h2>
+          <p>The kernel side only collects and transports essential data. More complex parsing and security decisions stay in the Go application, where the code is easier to test and change.</p>
+          <p>Process and network monitoring share the same event formats and state models. Feature branches and pull requests make changes to those shared contracts visible while the two parts are developed in parallel.</p>
           <div class="callout"><strong>Current framing</strong><p>Vesuvius is active thesis work. This case study focuses on verified architecture and my process-monitoring contribution; it does not claim production deployment or performance results that have not yet been measured.</p></div>
         </div>
       </section>
 
-      <a class="case-next" href="ebpf-exploitability.html"><span>Related research</span><strong>eBPF exploitability →</strong></a>
+      <a class="case-next" href="secure-timeout-system.html"><span>Next case study</span><strong>Secure Timeout System →</strong></a>
     </div>
   </main>
 
-  <footer class="site-footer"><span>© <span data-year></span> Simone Romano</span><span>Case study / Vesuvius</span><div><a href="../index.html">Home</a><a href="mailto:simoneromano221@gmail.com">Email</a></div></footer>
+  <footer class="portfolio-footer"><div><strong>© <span data-year></span> Simone Romano.</strong><span>All rights reserved.</span></div><div><span>Case study / Vesuvius</span><a href="../index.html">Back to portfolio</a></div><div><span>Site last updated</span><time datetime="2026-06-20">20 June 2026</time></div></footer>
 </body>
 </html>
