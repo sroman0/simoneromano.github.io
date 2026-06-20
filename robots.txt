@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sroman0.github.io/sitemap.xml
+Sitemap: https://sroman0.github.io/simoneromano.github.io/sitemap.xml
