@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "simoneromano-github-io",
+  "name": "sromano-digital-portfolio",
   "compatibility_date": "2026-06-20",
   "observability": {
     "enabled": true
