@@ -62,6 +62,8 @@ h1 em, h2 em { color: var(--muted); font-style: normal; font-weight: 400; }
 .button:hover { transform: translateY(-2px); }
 .button-primary { background: var(--ink); color: var(--paper); }
 .button-primary:hover { background: #292d24; }
+.button-secondary { border: 1px solid var(--line); background: transparent; color: var(--ink); }
+.button-secondary:hover { background: var(--paper-2); }
 .text-link { display: inline-flex; align-items: center; min-height: 2.75rem; font-size: .9rem; font-weight: 650; text-underline-offset: .35rem; text-decoration-thickness: 1px; }
 
 .hero-system { position: relative; justify-self: center; width: min(38vw, 33rem); aspect-ratio: 1; border: 1px solid var(--line); border-radius: 50%; }
@@ -335,6 +337,7 @@ h1 em, h2 em { color: var(--muted); font-style: normal; font-weight: 400; }
 
 /* Dark theme */
 html[data-theme="dark"] .site-header.scrolled { background: rgba(17, 19, 15, .9); }
+html[data-theme="dark"] .button-primary:hover { background: #d8dad2; }
 html[data-theme="dark"] .projects-simple { background: #090b08; color: #eeeee7; }
 html[data-theme="dark"] .other-work-simple { background: #191c17; }
 html[data-theme="dark"] .compact-project-list a:hover { background: rgba(255, 255, 255, .06); }
